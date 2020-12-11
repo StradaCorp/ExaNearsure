@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import sun.misc.BASE64Decoder;
+import java.util.Base64;
 
 @SuppressWarnings("restriction")
 public class ContactUtils {
@@ -18,8 +18,8 @@ public class ContactUtils {
 		BufferedImage image = null;
 		byte[] imageByte;
 		try {
-			BASE64Decoder decoder = new BASE64Decoder();
-			imageByte = decoder.decodeBuffer(imageString);
+			Base64.Decoder decoder = Base64.getDecoder();
+			imageByte = decoder.decode(imageString);
 			ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
 			image = ImageIO.read(bis);
 			bis.close();

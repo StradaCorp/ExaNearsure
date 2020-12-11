@@ -1,16 +1,9 @@
 package com.solstice.contact.domain;
 
 import java.util.Calendar;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import org.springframework.hateoas.ResourceSupport;
 
@@ -33,6 +26,13 @@ public class Contact extends ResourceSupport {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(nullable = false)
 	private Address address;
+
+	@OneToMany(mappedBy = "contact")
+	Set<ContactMovie> movies;
+//	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+//	@JoinTable(name = "CONTACT_MOVIE", joinColumns = { @JoinColumn(name = "STUDENT_ID") }, inverseJoinColumns = {
+//			@JoinColumn(name = "COURSE_ID") })
+//	private Set<Movie> movies;
 
 	public Contact(Long contactId, String name, String company, String profileImage, String email, Calendar birthdate,
 			String personalPhoneNumber, String workPhoneNumber, Address address) {

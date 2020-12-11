@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Calendar;
 
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,15 @@ public class ContactControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
+
+	@Before
+	public void loadData() throws Exception {
+		Contact contact = new Contact(null, "Clark Kent", "Solstice", "", "clark.kent@gmail.com",
+				Calendar.getInstance(), "312-333-5555", null,
+				new Address(null, "1068 W Granville Ave", "22", "Rochester", "NY", "60660"));
+		mvc.perform(post("/contact").content(ContactUtils.asJsonString(contact)).contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+	}
 
 	@Test
 	public void listContactsTest() throws Exception {
