@@ -29,10 +29,6 @@ public class Contact extends ResourceSupport {
 
 	@OneToMany(mappedBy = "contact")
 	Set<ContactMovie> movies;
-//	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
-//	@JoinTable(name = "CONTACT_MOVIE", joinColumns = { @JoinColumn(name = "STUDENT_ID") }, inverseJoinColumns = {
-//			@JoinColumn(name = "COURSE_ID") })
-//	private Set<Movie> movies;
 
 	public Contact(Long contactId, String name, String company, String profileImage, String email, Calendar birthdate,
 			String personalPhoneNumber, String workPhoneNumber, Address address) {
