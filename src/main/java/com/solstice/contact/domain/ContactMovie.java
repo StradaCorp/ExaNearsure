@@ -3,7 +3,7 @@ package com.solstice.contact.domain;
 import javax.persistence.*;
 
 @Entity
-@NamedQueries({ @NamedQuery(query = "FROM ContactMovie c WHERE c.contact.contactId = :contactId", name = "ContactMovie.listMoviesByContact") })
+@NamedQueries({ @NamedQuery(query = "FROM ContactMovie c WHERE c.contact.contactId = :contactId ORDER BY c.movie.name ", name = "ContactMovie.listMoviesByContact") })
 public class ContactMovie {
 
     @Id

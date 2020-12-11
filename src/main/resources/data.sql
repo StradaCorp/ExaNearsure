@@ -6,3 +6,4 @@ INSERT INTO contact (contact_id, name, company, profile_image, email, birthdate,
  VALUES  (1,'Clark Kent', 'company', 'profile_image', 'email', null, 'personal_phone_number', 'work_phone_number', 1);
 
 INSERT INTO contact_movie (id, contact_id, movie_id, score, comments) VALUES  (1, 1, 2, 5, 'Best movie ever');
+INSERT INTO contact_movie (id, contact_id, movie_id, score, comments) VALUES  (2, 1, 1, 4, 'Longest movie ever');
